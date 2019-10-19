@@ -13,7 +13,9 @@ class LoadToast extends StatefulWidget {
         backgroundColor ?? Colors.white, circularIndicatorColor ?? Colors.blue);
   }
 
-  show() => lts.show();
+  show({String text}) {
+    lts.show(text: text ?? 'Loading...');
+  }
 
   success() => lts.success();
 
@@ -66,12 +68,14 @@ class _LoadToastState extends State<LoadToast> with TickerProviderStateMixin {
   }
 
   show({String text}) {
-    debugPrint('Showing loadtoast');
-    setState(() {
-      _message = text ?? _message;
-    });
-    _opacityController.forward();
-    _isShowing = true;
+    if (!_isShowing) {
+      debugPrint('Showing loadtoast');
+      setState(() {
+        _message = text ?? _message;
+      });
+      _opacityController.forward();
+      _isShowing = true;
+    }
   }
 
   success() {

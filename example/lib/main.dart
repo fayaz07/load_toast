@@ -13,7 +13,7 @@ class Example extends StatefulWidget {
 
 class _ExampleState extends State<Example> {
 
-  LoadToast load_toast = LoadToast();
+  LoadToast load_toast = LoadToast(backgroundColor: Colors.greenAccent,circularIndicatorColor: Colors.white,);
 
   @override
   Widget build(BuildContext context) {
