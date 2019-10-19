@@ -108,7 +108,7 @@ class _LoadToastState extends State<LoadToast> with TickerProviderStateMixin {
     _scaleController = AnimationController(
       vsync: this,
       animationBehavior: AnimationBehavior.normal,
-      duration: Duration(milliseconds: 1000),
+      duration: _animDuration,
     );
 
     _opacityController = AnimationController(
@@ -134,7 +134,7 @@ class _LoadToastState extends State<LoadToast> with TickerProviderStateMixin {
   }
 
   _listenToScale() {
-    if (_scaleAnim.value <= 130.0) {
+    if (_scaleAnim.value <= 200.0) {
       setState(() {
         _showingChild = _postChild;
       });
