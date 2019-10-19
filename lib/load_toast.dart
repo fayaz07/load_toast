@@ -134,7 +134,7 @@ class _LoadToastState extends State<LoadToast> with TickerProviderStateMixin {
   }
 
   _listenToScale() {
-    if (_scaleAnim.value <= 180.0) {
+    if (_scaleAnim.value <= 130.0) {
       setState(() {
         _showingChild = _postChild;
       });
@@ -184,17 +184,13 @@ class _LoadToastState extends State<LoadToast> with TickerProviderStateMixin {
                   animation: _scaleAnim,
                   builder: (BuildContext context, Widget child) {
                     return Material(
-                      type: MaterialType.transparency,
+                      borderRadius: BorderRadius.all(Radius.circular(_radius)),
+                      color: containerColor,
+                      type: MaterialType.canvas,
                       elevation: 8.0,
-                      child: Container(
+                      child: SizedBox(
                           width: _scaleAnim.value,
                           height: _containerHeight,
-                          padding: const EdgeInsets.all(0.0),
-                          decoration: ShapeDecoration(
-                              color: containerColor,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.all(
-                                      Radius.circular(_radius)))),
                           child: _showingChild),
                     );
                   },
