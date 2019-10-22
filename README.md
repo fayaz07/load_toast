@@ -9,6 +9,8 @@ A plugin that would really help you show some cool animated widget, describing y
 ## How does it look like
 <img src="https://raw.githubusercontent.com/fayaz07/load_toast/master/loadtoast_sketch.png"/>
 
+Need a demo, [checkout here](https://raw.githubusercontent.com/fayaz07/load_toast/master/demo.mp4)
+
 ## Supported Dart Versions
 *Dart SDK version* **>=2.1.0 <3.0.0**
 
