@@ -17,7 +17,7 @@ A plugin that would really help you show some cool animated widget, describing y
 Add the Package
 ```yaml
 dependencies:
-  load_toast: ^0.0.1
+  load_toast: ^1.0.0
 ```
 
 ## How to use
