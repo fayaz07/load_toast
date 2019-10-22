@@ -2,12 +2,12 @@
 
 A plugin that would really help you show some cool animated widget, describing your app is busy.
 <p align="center">
-  <img src="mockup.png" align="center"/>
+  <img src="https://raw.githubusercontent.com/fayaz07/load_toast/master/mockup.png" align="center"/>
 </p>
 
 
 ## How does it look like
-<img src="loadtoast_sketch.png"/>
+<img src="https://raw.githubusercontent.com/fayaz07/load_toast/master/loadtoast_sketch.png"/>
 
 ## Supported Dart Versions
 *Dart SDK version* **>=2.1.0 <3.0.0**
