@@ -1,16 +1,123 @@
-# example
+```dart
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:load_toast/load_toast.dart';
 
-A new Flutter application.
+void main() {
+  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: Example()));
+}
 
-## Getting Started
+class Example extends StatefulWidget {
+  @override
+  _ExampleState createState() => _ExampleState();
+}
 
-This project is a starting point for a Flutter application.
+class _ExampleState extends State<Example> {
 
-A few resources to get you started if this is your first Flutter project:
+  LoadToast load_toast = LoadToast(backgroundColor: Colors.greenAccent,circularIndicatorColor: Colors.white,);
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(
+        children: <Widget>[
+          Positioned(
+              top: 190.0,
+              left: 20.0,
+              right: 20.0,
+              child: RaisedButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0)),
+                onPressed: () {
+                  load_toast.show();
+                },
+                child: SizedBox(
+                  height: 50.0,
+                  child: Center(
+                    child: Text(
+                      'Show toast',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                ),
+                color: Colors.blueAccent,
+              )),
+          Positioned(
+              top: 260.0,
+              left: 20.0,
+              right: 20.0,
+              child: RaisedButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0)),
+                onPressed: () {
+                  load_toast.success();
+                },
+                child: SizedBox(
+                  height: 50.0,
+                  child: Center(
+                    child: Text('Success',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w600)),
+                  ),
+                ),
+                color: Colors.green,
+              )),
+          Positioned(
+              top: 320.0,
+              left: 20.0,
+              right: 20.0,
+              child: RaisedButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0)),
+                onPressed: () {
+                  load_toast.error();
+                },
+                child: SizedBox(
+                  height: 50.0,
+                  child: Center(
+                    child: Text('Error',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w600)),
+                  ),
+                ),
+                color: Colors.red,
+              )),
+          Positioned(
+              top: 380.0,
+              left: 20.0,
+              right: 20.0,
+              child: RaisedButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0)),
+                onPressed: () {
+                  load_toast.warning();
+                },
+                child: SizedBox(
+                  height: 50.0,
+                  child: Center(
+                    child: Text('Warning',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w600)),
+                  ),
+                ),
+                color: Colors.yellow,
+              )),
+          load_toast
+        ],
+      ),
+    );
+  }
+}
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+
+```
