@@ -10,7 +10,7 @@ homepage: https://github.com/fayaz07/load_toast
 repository: https://github.com/fayaz07/load_toast
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
   flutter:

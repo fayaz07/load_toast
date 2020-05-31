@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:load_toast/load_toast.dart';
 
 void main() {
-  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: Example()));
+  runApp(MaterialApp(home: LoadToast(child: Example())));
 }
+
+final textStyle =
+    TextStyle(color: Colors.white, fontSize: 20.0, fontWeight: FontWeight.bold);
 
 class Example extends StatefulWidget {
   @override
@@ -12,106 +15,138 @@ class Example extends StatefulWidget {
 }
 
 class _ExampleState extends State<Example> {
-
-  LoadToast load_toast = LoadToast(backgroundColor: Colors.greenAccent,circularIndicatorColor: Colors.white,);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: <Widget>[
-          Positioned(
-              top: 190.0,
-              left: 20.0,
-              right: 20.0,
-              child: RaisedButton(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0)),
-                onPressed: () {
-                  load_toast.show();
-                },
-                child: SizedBox(
-                  height: 50.0,
-                  child: Center(
-                    child: Text(
-                      'Show toast',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.w600),
-                    ),
-                  ),
-                ),
-                color: Colors.blueAccent,
-              )),
-          Positioned(
-              top: 260.0,
-              left: 20.0,
-              right: 20.0,
-              child: RaisedButton(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0)),
-                onPressed: () {
-                  load_toast.success();
-                },
-                child: SizedBox(
-                  height: 50.0,
-                  child: Center(
-                    child: Text('Success',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18.0,
-                            fontWeight: FontWeight.w600)),
-                  ),
-                ),
-                color: Colors.green,
-              )),
-          Positioned(
-              top: 320.0,
-              left: 20.0,
-              right: 20.0,
-              child: RaisedButton(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0)),
-                onPressed: () {
-                  load_toast.error();
-                },
-                child: SizedBox(
-                  height: 50.0,
-                  child: Center(
-                    child: Text('Error',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18.0,
-                            fontWeight: FontWeight.w600)),
-                  ),
-                ),
-                color: Colors.red,
-              )),
-          Positioned(
-              top: 380.0,
-              left: 20.0,
-              right: 20.0,
-              child: RaisedButton(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0)),
-                onPressed: () {
-                  load_toast.warning();
-                },
-                child: SizedBox(
-                  height: 50.0,
-                  child: Center(
-                    child: Text('Warning',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18.0,
-                            fontWeight: FontWeight.w600)),
-                  ),
-                ),
-                color: Colors.yellow,
-              )),
-          load_toast
-        ],
+      body: Center(
+        child: Wrap(
+          spacing: 8.0,
+          runSpacing: 8.0,
+          crossAxisAlignment: WrapCrossAlignment.center,
+          alignment: WrapAlignment.center,
+          direction: Axis.horizontal,
+          children: <Widget>[
+            RaisedButton(
+              color: Colors.blue,
+              child: Text(
+                'Show LoadToast',
+                style: textStyle,
+              ),
+              onPressed: () {
+                showLoadToast();
+              },
+            ),
+            RaisedButton(
+              color: Colors.green,
+              child: Text(
+                'LoadToast Success',
+                style: textStyle,
+              ),
+              onPressed: () {
+                hideLoadToastWithSuccess();
+              },
+            ),
+            RaisedButton(
+              color: Colors.red,
+              child: Text(
+                'LoadToast Error',
+                style: textStyle,
+              ),
+              onPressed: () {
+                hideLoadToastWithError();
+              },
+            ),
+            RaisedButton(
+              color: Colors.orange,
+              child: Text(
+                'LoadToast Warning',
+                style: textStyle,
+              ),
+              onPressed: () {
+                hideLoadToastWithWarning();
+              },
+            ),
+            RaisedButton(
+              color: Colors.orange,
+              child: Text(
+                'Go to new page',
+                style: textStyle,
+              ),
+              onPressed: () {
+                Navigator.of(context).push(CupertinoPageRoute(
+                    builder: (BuildContext context) => NewPage()));
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class NewPage extends StatefulWidget {
+  @override
+  _NewPageState createState() => _NewPageState();
+}
+
+class _NewPageState extends State<NewPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Wrap(
+          spacing: 8.0,
+          runSpacing: 8.0,
+          crossAxisAlignment: WrapCrossAlignment.center,
+          alignment: WrapAlignment.center,
+          direction: Axis.horizontal,
+          children: <Widget>[
+            Text(
+              'Second page',
+              style: textStyle,
+            ),
+            RaisedButton(
+              color: Colors.blue,
+              child: Text(
+                'Show LoadToast',
+                style: textStyle,
+              ),
+              onPressed: () {
+                showLoadToast();
+              },
+            ),
+            RaisedButton(
+              color: Colors.green,
+              child: Text(
+                'LoadToast Success',
+                style: textStyle,
+              ),
+              onPressed: () {
+                hideLoadToastWithSuccess();
+              },
+            ),
+            RaisedButton(
+              color: Colors.red,
+              child: Text(
+                'LoadToast Error',
+                style: textStyle,
+              ),
+              onPressed: () {
+                hideLoadToastWithError();
+              },
+            ),
+            RaisedButton(
+              color: Colors.orange,
+              child: Text(
+                'LoadToast Warning',
+                style: textStyle,
+              ),
+              onPressed: () {
+                hideLoadToastWithWarning();
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
