@@ -6,68 +6,68 @@ A plugin that would really help you show some cool animated widget, describing y
 </p>
 
 
-## How does it look like
-<img src="https://raw.githubusercontent.com/fayaz07/load_toast/master/loadtoast_sketch.png"/>
+## Demo
+<!-- <img src="https://raw.githubusercontent.com/fayaz07/load_toast/master/loadtoast_sketch.png"/> -->
 
-Need a demo, [checkout here](https://raw.githubusercontent.com/fayaz07/load_toast/master/demo.mp4)
+[checkout video](https://raw.githubusercontent.com/fayaz07/load_toast/master/demo.mp4)
+
+[Example](example/lib/main.dart)
 
 ## Supported Dart Versions
-*Dart SDK version* **>=2.1.0 <3.0.0**
+*Dart SDK version* **>=2.7.0 <3.0.0**
 
 
 ## Installation
 Add the Package
 ```yaml
 dependencies:
-  load_toast: ^1.0.0
+  load_toast: ^2.0.0
 ```
 
 ## How to use
 
-Import the package in your dart file
-```yaml
-import 'package:load_toast/load_toast.dart';
-```
+#### Wrap your widget with **LoadToast**
 
-Create an instance of it, maybe a static variable widget can really help as it would be an optimized choice. Wrap it in a MaterialApp->Stack->[YourApp(), loadtoast]
-
-Create an instance of LoadToast
 ```dart
-LoadToast loadToast = LoadToast();
-```
-> You can specify the optional parameters to the above constructor, **backgroundColor: Colors.greenAccent, circularIndicatorColor: Colors.white**
-
-Plug it into your widget tree in a **Stack** parent
-```dart  
-  Widget build(BuildContext context) {
-    return Scaffold(
-        body: Stack(children: <Widget>[
-      //... your children
-      loadToast
-    ]));
-  }
+void main() {
+  runApp(
+    MaterialApp(
+      home: LoadToast(
+        child: Example(),
+      ),
+    ),
+  );
+}
 ```
 
-That's it, you're done, lets show it
+#### You can specify the optional parameters to the above constructor, **backgroundColor: Colors.greenAccent, circularIndicatorColor: Colors.white, text** in LTOptions
+
+
+That's it, you're done, lets show it. You can call this method anywhere in your application
 ```dart
-loadToast.show();
+showLoadToast(
+  backgroundColor: Colors.white,
+  indicatorColor: Colors.blue,
+  text: 'Please wait...',
+);
 ```
+
 > Note: You can specify the optional parameter to the above method, **text: "Hello there!"**
 
-Handle the cases now
+## Handle the cases now
 * The operation ended up in **Success**
 ```dart
-loadToast.success();
+hideLoadToastWithSuccess();
 ```
 
 * Unfortuantely it has failed
 ```dart
-loadToast.error();
+hideLoadToastWithError();
 ```
 
 * Hmm... Succeeded but there's something tricky
 ```dart
-loadToast.warning();
+hideLoadToastWithWarning();
 ```
 ---
 ### Want to contribute? 

@@ -3,7 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:load_toast/load_toast.dart';
 
 void main() {
-  runApp(MaterialApp(home: LoadToast(child: Example())));
+  runApp(
+    MaterialApp(
+      home: LoadToast(
+        child: Example(),
+      ),
+    ),
+  );
 }
 
 final textStyle =
@@ -33,7 +39,11 @@ class _ExampleState extends State<Example> {
                 style: textStyle,
               ),
               onPressed: () {
-                showLoadToast();
+                showLoadToast(
+                  backgroundColor: Colors.white,
+                  indicatorColor: Colors.blue,
+                  text: 'Please wait...'
+                );
               },
             ),
             RaisedButton(

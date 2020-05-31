@@ -66,7 +66,6 @@ Future<bool> showLoadToast(
     debugPrint('''Unable to show LoadToast,
     if you find this issue as a bug please file an issue at\nhttps://github.com/fayaz07/load_toast''');
     print(err);
-    throw err;
     return Future.value(false);
   }
 }
