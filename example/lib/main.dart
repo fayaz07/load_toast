@@ -4,9 +4,9 @@ import 'package:load_toast/load_toast.dart';
 
 void main() {
   runApp(
-    MaterialApp(
-      home: LoadToast(
-        child: Example(),
+    LoadToast(
+      child: MaterialApp(
+        home: Example(),
       ),
     ),
   );
@@ -40,10 +40,9 @@ class _ExampleState extends State<Example> {
               ),
               onPressed: () {
                 showLoadToast(
-                  backgroundColor: Colors.white,
-                  indicatorColor: Colors.blue,
-                  text: 'Please wait...'
-                );
+                    backgroundColor: Colors.white,
+                    indicatorColor: Colors.blue,
+                    text: 'Please wait...');
               },
             ),
             RaisedButton(

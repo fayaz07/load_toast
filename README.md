@@ -5,6 +5,12 @@ A plugin that would really help you show some cool animated widget, describing y
   <img src="https://raw.githubusercontent.com/fayaz07/load_toast/master/mockup.png" align="center"/>
 </p>
 
+[![](https://img.shields.io/badge/dontate-Buy%20Me%20a%20Coffee-blueviolet)](https://www.buymeacoffee.com/fayaz) &nbsp;
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-in-0e76a8)](https://www.linkedin.com/in/fayaz07) &nbsp; [![Follow](https://img.shields.io/github/followers/fayaz07?style=social)](https://github.com/fayaz07) &nbsp; [![Fork](https://img.shields.io/github/forks/fayaz07/load_toast?style=social)](https://github.com/fayaz07/load_toast/fork) &nbsp; [![Star](https://img.shields.io/github/stars/fayaz07/load_toast?style=social)](https://github.com/fayaz07/load_toast/star) &nbsp; [![Watches](https://img.shields.io/github/watchers/fayaz07/load_toast?style=social)](https://github.com/fayaz07/load_toast/)
+
+[![Get the library](https://img.shields.io/badge/Get%20library-pub-blue)](https://pub.dev/packages/load_toast) &nbsp; [![Example](https://img.shields.io/badge/Example-Ex-success)](https://pub.dev/packages/load_toast#-example-tab-)
+
+
 
 ## Demo
 <!-- <img src="https://raw.githubusercontent.com/fayaz07/load_toast/master/loadtoast_sketch.png"/> -->
@@ -21,7 +27,7 @@ A plugin that would really help you show some cool animated widget, describing y
 Add the Package
 ```yaml
 dependencies:
-  load_toast: ^2.0.0
+  load_toast: ^2.0.0+1
 ```
 
 ## How to use
@@ -31,9 +37,9 @@ dependencies:
 ```dart
 void main() {
   runApp(
-    MaterialApp(
-      home: LoadToast(
-        child: Example(),
+    LoadToast(
+      child: MaterialApp(
+        home: Example(),
       ),
     ),
   );
