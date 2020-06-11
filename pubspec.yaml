@@ -1,6 +1,6 @@
 name: load_toast
 description: A plugin that would really help you show some cool animated widget, describing your app is busy.
-version: 2.0.0
+version: 2.0.0+1
 
 authors:
   - Fayaz <fayazfz07@gmail.com>

@@ -9,17 +9,41 @@ final _tKey = GlobalKey(debugLabel: 'overlay_parent');
 final _loadToastKey =
     GlobalKey<LoadToastChildState>(debugLabel: 'load_toast_overlay_child');
 
+OverlayState get _overlayState {
+  final context = _tKey.currentContext;
+  if (context == null) return null;
+
+  NavigatorState navigator;
+  void visitor(Element element) {
+    if (navigator != null) return;
+
+    if (element.widget is Navigator) {
+      navigator = (element as StatefulElement).state;
+    } else {
+      element.visitChildElements(visitor);
+    }
+  }
+
+  context.visitChildElements(visitor);
+
+  assert(navigator != null,
+  '''Cannot find LoadToast above the widget tree, unable to show overlay''');
+  return navigator.overlay;
+}
+
+
 OverlayEntry _overlayEntry;
 
 /// These methods deal with showing and hiding the overlay
 Future<bool> _showOverlay({@required Widget child}) {
-  BuildContext context = _tKey.currentContext;
+
+  final overlay = _overlayState;
 
   _overlayEntry = OverlayEntry(
     builder: (context) => child,
   );
 
-  Overlay.of(context).insert(_overlayEntry);
+  overlay.insert(_overlayEntry);
   return Future.value(true);
 }
 
