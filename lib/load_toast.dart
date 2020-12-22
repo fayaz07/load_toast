@@ -27,16 +27,14 @@ OverlayState get _overlayState {
   context.visitChildElements(visitor);
 
   assert(navigator != null,
-  '''Cannot find LoadToast above the widget tree, unable to show overlay''');
+      '''Cannot find LoadToast above the widget tree, unable to show overlay''');
   return navigator.overlay;
 }
-
 
 OverlayEntry _overlayEntry;
 
 /// These methods deal with showing and hiding the overlay
 Future<bool> _showOverlay({@required Widget child}) {
-
   final overlay = _overlayState;
 
   _overlayEntry = OverlayEntry(
@@ -63,7 +61,7 @@ Future<bool> showLoadToast(
         hideOverlay();
       }
     } catch (err) {
-      //
+      hideOverlay();
     }
     final loadToastChild = Positioned(
       height: 100.0,
@@ -110,6 +108,7 @@ hideLoadToastWithError() async {
     await _loadToastKey.currentState.error();
     hideOverlay();
   } else {
+    hideOverlay();
     debugPrint('''LoadToast error: LoadToast not shown/disposed''');
   }
 }
@@ -120,6 +119,7 @@ hideLoadToastWithWarning() async {
     await _loadToastKey.currentState.warning();
     hideOverlay();
   } else {
+    hideOverlay();
     debugPrint('''LoadToast error: LoadToast not shown/disposed''');
   }
 }
