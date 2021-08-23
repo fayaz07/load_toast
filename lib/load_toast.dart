@@ -1,7 +1,7 @@
 library load_toast;
 
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:load_toast/src/options.dart';
 import 'package:load_toast/src/toast.dart';
 
@@ -9,16 +9,16 @@ final _tKey = GlobalKey(debugLabel: 'overlay_parent');
 final _loadToastKey =
     GlobalKey<LoadToastChildState>(debugLabel: 'load_toast_overlay_child');
 
-OverlayState get _overlayState {
+OverlayState? get _overlayState {
   final context = _tKey.currentContext;
   if (context == null) return null;
 
-  NavigatorState navigator;
+  NavigatorState? navigator;
   void visitor(Element element) {
     if (navigator != null) return;
 
     if (element.widget is Navigator) {
-      navigator = (element as StatefulElement).state;
+      navigator = (element as StatefulElement).state as NavigatorState?;
     } else {
       element.visitChildElements(visitor);
     }
@@ -27,17 +27,15 @@ OverlayState get _overlayState {
   context.visitChildElements(visitor);
 
   assert(navigator != null,
-  '''Cannot find LoadToast above the widget tree, unable to show overlay''');
-  return navigator.overlay;
+      '''Cannot find LoadToast above the widget tree, unable to show overlay''');
+  return navigator?.overlay;
 }
 
-
-OverlayEntry _overlayEntry;
+late OverlayEntry _overlayEntry;
 
 /// These methods deal with showing and hiding the overlay
-Future<bool> _showOverlay({@required Widget child}) {
-
-  final overlay = _overlayState;
+Future<bool> _showOverlay({required Widget child}) {
+  final overlay = _overlayState!;
 
   _overlayEntry = OverlayEntry(
     builder: (context) => child,
@@ -48,22 +46,26 @@ Future<bool> _showOverlay({@required Widget child}) {
 }
 
 hideOverlay() {
-  _overlayEntry.remove();
+  try {
+    _overlayEntry.remove();
+  } catch (e) {
+    debugPrint('''LoadToast error: $e''');
+  }
 }
 
 /// --------------------------- end overlay methods --------------------------
 
 /// These methods deal with the load toast
 Future<bool> showLoadToast(
-    {Color backgroundColor, Color indicatorColor, String text}) async {
+    {Color? backgroundColor, Color? indicatorColor, String? text}) async {
   try {
     try {
       if (_loadToastKey.currentState != null &&
-          _loadToastKey.currentState.mounted) {
+          (_loadToastKey.currentState?.mounted ?? false)) {
         hideOverlay();
       }
     } catch (err) {
-      //
+      hideOverlay(); //
     }
     final loadToastChild = Positioned(
       height: 100.0,
@@ -83,7 +85,7 @@ Future<bool> showLoadToast(
     );
 
     Future.delayed(Duration(milliseconds: 200))
-        .whenComplete(() => _loadToastKey.currentState.show(text: text));
+        .whenComplete(() => _loadToastKey.currentState?.show(text: text));
 
     return Future.value(true);
   } catch (err) {
@@ -96,39 +98,42 @@ Future<bool> showLoadToast(
 
 hideLoadToastWithSuccess() async {
   if (_loadToastKey.currentState != null &&
-      _loadToastKey.currentState.mounted) {
-    await _loadToastKey.currentState.success();
+      (_loadToastKey.currentState?.mounted ?? false)) {
+    await _loadToastKey.currentState?.success();
     hideOverlay();
   } else {
     debugPrint('''LoadToast error: LoadToast not shown/disposed''');
+    hideOverlay();
   }
 }
 
 hideLoadToastWithError() async {
   if (_loadToastKey.currentState != null &&
-      _loadToastKey.currentState.mounted) {
-    await _loadToastKey.currentState.error();
+      (_loadToastKey.currentState?.mounted ?? false)) {
+    await _loadToastKey.currentState?.error();
     hideOverlay();
   } else {
     debugPrint('''LoadToast error: LoadToast not shown/disposed''');
+    hideOverlay();
   }
 }
 
 hideLoadToastWithWarning() async {
   if (_loadToastKey.currentState != null &&
-      _loadToastKey.currentState.mounted) {
-    await _loadToastKey.currentState.warning();
+      (_loadToastKey.currentState?.mounted ?? false)) {
+    await _loadToastKey.currentState?.warning();
     hideOverlay();
   } else {
     debugPrint('''LoadToast error: LoadToast not shown/disposed''');
+    hideOverlay();
   }
 }
 
 /// ----------------------- LoadToast methods end ---------------------------------
 class LoadToast extends StatelessWidget {
-  final Widget child;
+  final Widget? child;
 
-  const LoadToast({Key key, this.child}) : super(key: key);
+  const LoadToast({Key? key, this.child}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

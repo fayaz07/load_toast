@@ -9,12 +9,12 @@ const _defaultTextStyle =
     TextStyle(color: Colors.black, fontSize: 24.0, fontWeight: FontWeight.w700);
 
 class LTOptions {
-  String text;
-  Color backgroundColor;
-  Color indicatorColor;
-  TextStyle textStyle;
-  Widget postChild;
-  LTState state;
+  String? text;
+  Color? backgroundColor;
+  Color? indicatorColor;
+  TextStyle? textStyle;
+  Widget? postChild;
+  LTState? state;
 
   LTOptions(
       {this.text = "Loading...",
@@ -29,13 +29,13 @@ class LTOptions {
     }
   }
 
-  static LTOptions copy(LTOptions options,
-      {String text,
-      Color backgroundColor,
-      Color indicatorColor,
-      TextStyle textStyle,
-      Widget postChild,
-      LTState state}) {
+  static LTOptions copy(LTOptions? options,
+      {String? text,
+      Color? backgroundColor,
+      Color? indicatorColor,
+      TextStyle? textStyle,
+      Widget? postChild,
+      LTState? state}) {
     ///
     LTOptions _copy = LTOptions(
       text: (text ?? options?.text) ?? "Loading...",
