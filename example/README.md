@@ -13,9 +13,7 @@ class Example extends StatefulWidget {
 }
 
 class _ExampleState extends State<Example> {
-
-  LoadToast load_toast = LoadToast(backgroundColor: Colors.greenAccent,circularIndicatorColor: Colors.white,);
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +27,10 @@ class _ExampleState extends State<Example> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0)),
                 onPressed: () {
-                  load_toast.show();
+                  showLoadToast(
+                      backgroundColor: Colors.white,
+                      indicatorColor: Colors.blue,
+                      text: 'Please wait...');
                 },
                 child: SizedBox(
                   height: 50.0,
@@ -53,7 +54,7 @@ class _ExampleState extends State<Example> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0)),
                 onPressed: () {
-                  load_toast.success();
+                  hideLoadToastWithSuccess();
                 },
                 child: SizedBox(
                   height: 50.0,
@@ -75,7 +76,7 @@ class _ExampleState extends State<Example> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0)),
                 onPressed: () {
-                  load_toast.error();
+                  hideLoadToastWithError();
                 },
                 child: SizedBox(
                   height: 50.0,
@@ -97,7 +98,7 @@ class _ExampleState extends State<Example> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0)),
                 onPressed: () {
-                  load_toast.warning();
+                  hideLoadToastWithWarning();
                 },
                 child: SizedBox(
                   height: 50.0,
@@ -111,8 +112,7 @@ class _ExampleState extends State<Example> {
                 ),
                 color: Colors.yellow,
               )),
-          load_toast
-        ],
+         ],
       ),
     );
   }
