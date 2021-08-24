@@ -32,8 +32,10 @@ class _ExampleState extends State<Example> {
           alignment: WrapAlignment.center,
           direction: Axis.horizontal,
           children: <Widget>[
-            RaisedButton(
-              color: Colors.blue,
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.blue,
+              ),
               child: Text(
                 'Show LoadToast',
                 style: textStyle,
@@ -45,8 +47,10 @@ class _ExampleState extends State<Example> {
                     text: 'Please wait...');
               },
             ),
-            RaisedButton(
-              color: Colors.green,
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.green,
+              ),
               child: Text(
                 'LoadToast Success',
                 style: textStyle,
@@ -55,8 +59,10 @@ class _ExampleState extends State<Example> {
                 hideLoadToastWithSuccess();
               },
             ),
-            RaisedButton(
-              color: Colors.red,
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.red,
+              ),
               child: Text(
                 'LoadToast Error',
                 style: textStyle,
@@ -65,8 +71,10 @@ class _ExampleState extends State<Example> {
                 hideLoadToastWithError();
               },
             ),
-            RaisedButton(
-              color: Colors.orange,
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.orange,
+              ),
               child: Text(
                 'LoadToast Warning',
                 style: textStyle,
@@ -75,8 +83,10 @@ class _ExampleState extends State<Example> {
                 hideLoadToastWithWarning();
               },
             ),
-            RaisedButton(
-              color: Colors.orange,
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.orange,
+              ),
               child: Text(
                 'Go to new page',
                 style: textStyle,
@@ -114,8 +124,10 @@ class _NewPageState extends State<NewPage> {
               'Second page',
               style: textStyle,
             ),
-            RaisedButton(
-              color: Colors.blue,
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.blue,
+              ),
               child: Text(
                 'Show LoadToast',
                 style: textStyle,
@@ -124,8 +136,10 @@ class _NewPageState extends State<NewPage> {
                 showLoadToast();
               },
             ),
-            RaisedButton(
-              color: Colors.green,
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.green,
+              ),
               child: Text(
                 'LoadToast Success',
                 style: textStyle,
@@ -134,8 +148,10 @@ class _NewPageState extends State<NewPage> {
                 hideLoadToastWithSuccess();
               },
             ),
-            RaisedButton(
-              color: Colors.red,
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.red,
+              ),
               child: Text(
                 'LoadToast Error',
                 style: textStyle,
@@ -144,8 +160,10 @@ class _NewPageState extends State<NewPage> {
                 hideLoadToastWithError();
               },
             ),
-            RaisedButton(
-              color: Colors.orange,
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.orange,
+              ),
               child: Text(
                 'LoadToast Warning',
                 style: textStyle,

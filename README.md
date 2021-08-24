@@ -20,14 +20,14 @@ A plugin that would really help you show some cool animated widget, describing y
 [Example](example/lib/main.dart)
 
 ## Supported Dart Versions
-*Dart SDK version* **>=2.7.0 <3.0.0**
+*Dart SDK version* **>=2.12.0 <3.0.0**
 
 
 ## Installation
 Add the Package
 ```yaml
 dependencies:
-  load_toast: ^2.0.0+1
+  load_toast: ^3.0.0+1
 ```
 
 ## How to use
@@ -89,6 +89,6 @@ Pull requests and issues are always welcome!
   <li> Create a <b>Pull Request</b> </li>
 </ol>
 
-#### View the issues [here](https://github.com/fayaz07/load_toast/issues)
+#### View the issues [here](https://github.com/nabil-hfz/load_toast/issues)
 
 > Inspired by [loadToast - android](https://github.com/code-mc/loadtoast)

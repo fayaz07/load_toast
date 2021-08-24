@@ -1,6 +1,7 @@
 import 'dart:async';
-import 'package:flutter/material.dart';
+
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:load_toast/src/options.dart';
 
 final Widget _postChildSuccess =
@@ -11,10 +12,10 @@ final Widget _postChildWarning =
     Image.asset('assets/warning.png', package: 'load_toast');
 
 class LoadToastChild extends StatefulWidget {
-  final LTOptions loadToastOptions;
+  final LTOptions? loadToastOptions;
 
   const LoadToastChild({
-    Key key,
+    Key? key,
     this.loadToastOptions,
   }) : super(key: key);
 
@@ -25,8 +26,8 @@ class LoadToastChild extends StatefulWidget {
 class LoadToastChildState extends State<LoadToastChild>
     with TickerProviderStateMixin {
   /// animation
-  Animation _scaleAnim, _opacityAnim;
-  AnimationController _scaleController, _opacityController;
+  late Animation _scaleAnim, _opacityAnim;
+  late AnimationController _scaleController, _opacityController;
 
   /// stream
   final StreamController<LTOptions> _ltOptionsController =
@@ -39,7 +40,7 @@ class LoadToastChildState extends State<LoadToastChild>
 
   bool _isShowing = false;
 
-  show({String text}) {
+  show({String? text}) {
     if (!_isShowing) {
 //      debugPrint('Showing loadtoast');
       _ltOptionsController.sink
@@ -138,33 +139,30 @@ class LoadToastChildState extends State<LoadToastChild>
         });
   }
 
-  Widget _getBody(AsyncSnapshot<LTOptions> snapshot) {
+  Widget? _getBody(AsyncSnapshot<LTOptions> snapshot) {
     final loading = Row(
       children: <Widget>[
         SizedBox(width: 16.0),
         Expanded(
           child: Text(
-            "${snapshot.data.text ?? "Loading..."}",
-            style: snapshot.data.textStyle,
+            "${snapshot.data?.text ?? "Loading..."}",
+            style: snapshot.data?.textStyle,
           ),
         ),
         SizedBox(width: 8.0),
         CircularProgressIndicator(
-          valueColor: AlwaysStoppedAnimation(snapshot.data.indicatorColor),
+          valueColor: AlwaysStoppedAnimation(snapshot.data?.indicatorColor),
         ),
         SizedBox(width: 8.0),
       ],
     );
-    switch (snapshot.data.state) {
+    switch (snapshot.data?.state) {
       case LTState.Idle:
         return loading;
-        break;
       case LTState.Loading:
         return loading;
-        break;
       case LTState.End:
-        return snapshot.data.postChild;
-        break;
+        return snapshot.data?.postChild;
       default:
         return loading;
     }
@@ -174,7 +172,7 @@ class LoadToastChildState extends State<LoadToastChild>
   Widget _getAnimatedBuilder(AsyncSnapshot<LTOptions> snapshot, double height) {
     return AnimatedBuilder(
         animation: _opacityAnim,
-        builder: (BuildContext context, Widget child) {
+        builder: (BuildContext context, Widget? child) {
           return Transform(
             transform: Matrix4.translationValues(
                 0.0, _opacityAnim.value * height * 0.1, 0.0),
@@ -184,10 +182,10 @@ class LoadToastChildState extends State<LoadToastChild>
                 alignment: Alignment.topCenter,
                 child: AnimatedBuilder(
                   animation: _scaleAnim,
-                  builder: (BuildContext context, Widget child) {
+                  builder: (BuildContext context, Widget? child) {
                     return Material(
                       borderRadius: BorderRadius.all(Radius.circular(_radius)),
-                      color: snapshot.data.backgroundColor,
+                      color: snapshot.data?.backgroundColor,
                       type: MaterialType.canvas,
                       elevation: 8.0,
                       child: SizedBox(
